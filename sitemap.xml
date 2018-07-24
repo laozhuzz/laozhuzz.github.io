@@ -3,17 +3,72 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://example.org/posts/codereview-tools/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://example.org/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>http://example.org/tags/code-review/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/categories/fun/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/gerrit/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/gitlab/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/categories/hugo/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/jenkins/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://example.org/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://example.org/tags/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/categories/test/</loc>
+    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
