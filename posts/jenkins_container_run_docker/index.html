@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.45" />
+
+
+
+<link rel="canonical" href="http://example.org/posts/jenkins_container_run_docker/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Jenkins_container_run_docker - My New Hugo Site</title>
+    
+<meta name="description" content="How to build Docker image in ci pipeline under jenkins which is running inside a Docker container?Docker 强烈建议不要使用Dind(docker in docker)这种方式, the solutions to make this happen are generally hacky and/or unreliable.建议使用Docker besize docker 的方式, 方法为传入docker.sock或者开放api给jenkins.记录步骤如下:首先, 启动一个jenkins containersudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins:lts sudo docker start jenkins sudo docker exec -it -u root jenkins bash  安装jenkins需要docker cli的支持:">
+
+<meta property="og:title" content="Jenkins_container_run_docker - My New Hugo Site">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://example.org/posts/jenkins_container_run_docker/">
+<meta property="og:image" content="http://example.org/images/default.png">
+<meta property="og:site_name" content="My New Hugo Site">
+<meta property="og:description" content="How to build Docker image in ci pipeline under jenkins which is running inside a Docker container?Docker 强烈建议不要使用Dind(docker in docker)这种方式, the solutions to make this happen are generally hacky and/or unreliable.建议使用Docker besize docker 的方式, 方法为传入docker.sock或者开放api给jenkins.记录步骤如下:首先, 启动一个jenkins containersudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins:lts sudo docker start jenkins sudo docker exec -it -u root jenkins bash  安装jenkins需要docker cli的支持:">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="My New Hugo Site">
+<meta name="twitter:url" content="http://example.org/posts/jenkins_container_run_docker/">
+<meta name="twitter:title" content="Jenkins_container_run_docker - My New Hugo Site">
+<meta name="twitter:description" content="How to build Docker image in ci pipeline under jenkins which is running inside a Docker container?Docker 强烈建议不要使用Dind(docker in docker)这种方式, the solutions to make this happen are generally hacky and/or unreliable.建议使用Docker besize docker 的方式, 方法为传入docker.sock或者开放api给jenkins.记录步骤如下:首先, 启动一个jenkins containersudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins:lts sudo docker start jenkins sudo docker exec -it -u root jenkins bash  安装jenkins需要docker cli的支持:">
+<meta name="twitter:image" content="http://example.org/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http://example.org/"
+    },
+    "headline": "Jenkins_container_run_docker - My New Hugo Site",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http://example.org/images/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2018-07-26T11:59:51JST",
+    "dateModified": "2018-07-26T11:59:51JST",
+    "author": {
+      "@type": "Person",
+      "name": "My New Hugo Site"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "My New Hugo Site",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://example.org/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "How to build Docker image in ci pipeline under jenkins which is running inside a Docker container?
+Docker 强烈建议不要使用Dind(docker in docker)这种方式, the solutions to make this happen are generally hacky and/or unreliable.
+建议使用Docker besize docker 的方式, 方法为传入docker.sock或者开放api给jenkins.
+记录步骤如下:
+首先, 启动一个jenkins container
+sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins:lts sudo docker start jenkins sudo docker exec -it -u root jenkins bash  安装jenkins需要docker cli的支持:"
+  }
+</script>
+
+
+    <link href="http://example.org/css/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://example.org/">My New Hugo Site</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://example.org/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://example.org/posts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">Jenkins_container_run_docker</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-07-26T11:59:51JST">Jul 26, 2018</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://example.org/posts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">Jenkins_container_run_docker</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>How to build Docker image in ci pipeline under jenkins which is running inside a Docker container?</p>
+
+<p>Docker 强烈建议<strong>不要使用Dind(docker in docker)这种方式</strong>, the solutions to make this happen are generally hacky and/or unreliable.</p>
+
+<p>建议使用Docker besize docker 的方式, 方法为传入docker.sock或者开放api给jenkins.</p>
+
+<p>记录步骤如下:</p>
+
+<p>首先, 启动一个jenkins container</p>
+
+<pre><code class="language-bash">sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins:lts
+
+sudo docker start jenkins
+
+sudo docker exec -it -u root jenkins bash
+</code></pre>
+
+<p>安装jenkins需要docker cli的支持:</p>
+
+<pre><code>apt-get update &amp;&amp; \
+apt-get -y install apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common &amp;&amp; \
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo &quot;$ID&quot;)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \
+add-apt-repository \
+   &quot;deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo &quot;$ID&quot;) \
+   $(lsb_release -cs) \
+   stable&quot; &amp;&amp; \
+apt-get update &amp;&amp; \
+apt-get -y install docker-ce
+</code></pre>
+
+<p>这里jenkins里不需要启动docker的service, 因为jenkins不使用dind(docker in docker)的方式, 使用的是传入的volume: <code>/var/run/docker.sock</code></p>
+
+<p>到这里环境其实已经安装好了, 剩下的就是配置jenkins.</p>
+
+<p>正常流程初始化jenkins后, 在 <code>Manage Jenkins/Manage Plugins/</code>中检查是否安装了 <code>Docker plugin</code>, 没有的话装上.</p>
+
+<p>等jenkins重启生效后, 在<code>Manage Jenkins/Configure System</code>中找到 <code>Cloud</code>, <code>Add a new cloud</code>, 使用本地docker.sock, 名字可以任取.</p>
+
+<p><img src="/images/jenkins_add_docker_cloud.jpg" alt="本地docker.sock配置" /></p>
+
+<p>这样jenkins就可以在pipeline中使用docker命令来进行docker image的构建了.</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://example.org/tags/jenkins/">jenkins</a></li>
+          
+          <li><a href="http://example.org/tags/docker/">docker</a></li>
+          
+          <li><a href="http://example.org/tags/ci/">ci</a></li>
+          
+          <li><a href="http://example.org/tags/cd/">cd</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://example.org/posts/jenkins_container_run_docker/" class="list-group-item">Jenkins_container_run_docker</a>
+      
+      <a href="http://example.org/posts/codereview-tools/" class="list-group-item">Codereview Tools</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://example.org/categories/fun" class="list-group-item">fun</a>
+      
+      <a href="http://example.org/categories/hugo" class="list-group-item">hugo</a>
+      
+      <a href="http://example.org/categories/test" class="list-group-item">test</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://example.org/tags/jenkins" class="list-group-item">jenkins</a>
+      
+      <a href="http://example.org/tags/cd" class="list-group-item">cd</a>
+      
+      <a href="http://example.org/tags/ci" class="list-group-item">ci</a>
+      
+      <a href="http://example.org/tags/code-review" class="list-group-item">code-review</a>
+      
+      <a href="http://example.org/tags/docker" class="list-group-item">docker</a>
+      
+      <a href="http://example.org/tags/gerrit" class="list-group-item">gerrit</a>
+      
+      <a href="http://example.org/tags/gitlab" class="list-group-item">gitlab</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; My New Hugo Site</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

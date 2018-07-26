@@ -6,10 +6,28 @@
     <description>Recent content in Tags on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Jul 2018 17:21:57 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Jul 2018 11:59:51 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cd</title>
+      <link>http://example.org/tags/cd/</link>
+      <pubDate>Thu, 26 Jul 2018 11:59:51 +0800</pubDate>
+      
+      <guid>http://example.org/tags/cd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ci</title>
+      <link>http://example.org/tags/ci/</link>
+      <pubDate>Thu, 26 Jul 2018 11:59:51 +0800</pubDate>
+      
+      <guid>http://example.org/tags/ci/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Code Review</title>
@@ -17,6 +35,15 @@
       <pubDate>Mon, 23 Jul 2018 17:21:57 +0800</pubDate>
       
       <guid>http://example.org/tags/code-review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>http://example.org/tags/docker/</link>
+      <pubDate>Thu, 26 Jul 2018 11:59:51 +0800</pubDate>
+      
+      <guid>http://example.org/tags/docker/</guid>
       <description></description>
     </item>
     
@@ -41,7 +68,7 @@
     <item>
       <title>Jenkins</title>
       <link>http://example.org/tags/jenkins/</link>
-      <pubDate>Mon, 23 Jul 2018 17:21:57 +0800</pubDate>
+      <pubDate>Thu, 26 Jul 2018 11:59:51 +0800</pubDate>
       
       <guid>http://example.org/tags/jenkins/</guid>
       <description></description>

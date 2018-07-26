@@ -6,10 +6,24 @@
     <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Jul 2018 17:21:57 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Jul 2018 11:59:51 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Jenkins_container_run_docker</title>
+      <link>http://example.org/posts/jenkins_container_run_docker/</link>
+      <pubDate>Thu, 26 Jul 2018 11:59:51 +0800</pubDate>
+      
+      <guid>http://example.org/posts/jenkins_container_run_docker/</guid>
+      <description>How to build Docker image in ci pipeline under jenkins which is running inside a Docker container?
+Docker 强烈建议不要使用Dind(docker in docker)这种方式, the solutions to make this happen are generally hacky and/or unreliable.
+建议使用Docker besize docker 的方式, 方法为传入docker.sock或者开放api给jenkins.
+记录步骤如下:
+首先, 启动一个jenkins container
+sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins:lts sudo docker start jenkins sudo docker exec -it -u root jenkins bash  安装jenkins需要docker cli的支持:</description>
+    </item>
     
     <item>
       <title>Codereview Tools</title>
