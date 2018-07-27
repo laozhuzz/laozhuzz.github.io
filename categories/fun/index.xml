@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Fun on My New Hugo Site</title>
-    <link>http://example.org/categories/fun/</link>
-    <description>Recent content in Fun on My New Hugo Site</description>
+    <title>Fun on 老猪的小屋</title>
+    <link>/categories/fun/</link>
+    <description>Recent content in Fun on 老猪的小屋</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 23 Jul 2018 17:21:57 +0800</lastBuildDate>
     
-	<atom:link href="http://example.org/categories/fun/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/fun/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Codereview Tools</title>
-      <link>http://example.org/posts/codereview-tools/</link>
+      <link>/posts/codereview-tools/</link>
       <pubDate>Mon, 23 Jul 2018 17:21:57 +0800</pubDate>
       
-      <guid>http://example.org/posts/codereview-tools/</guid>
+      <guid>/posts/codereview-tools/</guid>
       <description> CodeReview 对比 gerrit: 配置自动测试流程Verified +1 之后多人code review +2 gitlab: 提交Merge请求时候指定一个assignee来执行code review
    对比 gitlab gerrit 优胜     流程 流程弹性, 只能指定一人审核 流程强制, 未经过verified不能人工审核, 减少人力浪费, 可以多人审核通过后才算过审 gerrit   配置 配置简单 配置繁琐 gitlab   操作提醒 在merge时候发送邮件, 因为此时jenkins还在执行ci, 所以过早 按流程走, 很苏畅 gerrit   界面 界面优, 配色优, 使用时候舒服 上世纪界面 gitlab    结论  选择gitlab + jenkins做code review 这是看脸的世界, gerrit界面让人怀疑时代穿越 gitlab 在执行pipeline时候提前通知了assignee, 这点很不友好  TODO  gitlab 配置runner ci, 最后发现配置test container 测试 server container 时候不知道怎么相互通信 jenkins如何对比上次测试的数据  </description>
     </item>
