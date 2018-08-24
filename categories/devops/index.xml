@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Test on 老猪的小屋</title>
-    <link>/categories/test/</link>
-    <description>Recent content in Test on 老猪的小屋</description>
+    <title>Devops on 老猪的小屋</title>
+    <link>/categories/devops/</link>
+    <description>Recent content in Devops on 老猪的小屋</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 31 Jul 2018 17:21:57 +0800</lastBuildDate>
     
-	<atom:link href="/categories/test/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/devops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -43,17 +43,6 @@
 很多时候, 我们需要做一些甚至很多额外的工作, 仅仅是为了覆盖到某个分支.
 但这是值得的. 我们现在做的额外工作, 在未来将一直发挥作用(回归测试), 保证服务器的稳定.
 5. 自动化测试 将测试工具加入到ci工具链中, 每次发现版本有变化都跑测试工具.</description>
-    </item>
-    
-    <item>
-      <title>gerrit vs gitlab</title>
-      <link>/posts/codereview-tools/</link>
-      <pubDate>Mon, 23 Jul 2018 17:21:57 +0800</pubDate>
-      
-      <guid>/posts/codereview-tools/</guid>
-      <description> gerrit vs gitlab gerrit: 配置自动测试流程Verified +1 之后多人code review +2
-gitlab: 提交Merge请求时候指定一个assignee来执行code review
-   对比 gitlab gerrit 优胜     code review 流程弹性, 只能指定一人审核(ee可以多个) 流程强制, 未经过verified不能人工审核, 减少人力浪费, 多人审核通过后才算过审 gerrit   配置 配置简单 配置很繁琐 gitlab   操作提醒 在merge时候发送邮件, 因为此时jenkins还在执行ci, 所以过早 按流程走, 很苏畅 gerrit   界面 界面优, 配色优, 使用时候舒服 上世纪界面, 体验时空穿越 gitlab   社区 活跃, 人气旺 冷清 gitlab    结论  选择gitlab + jenkins 抱歉 gerrit, gerrit 在代码review方面强一点, 但这是个看脸看热闹的世界  TODO  gitlab 配置runner ci, 最后发现配置test container 测试 server container 时候不知道怎么相互通信 jenkins如何和上次测试的数据进行对比  </description>
     </item>
     
   </channel>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.45" />
+
+
+
+<link rel="canonical" href="/posts/server_auto_testing_practice/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>游戏服务器自动化测试实践 - 老猪的小屋</title>
+    
+<meta name="description" content="1、背景 游戏服务器不稳定是我们服务器人的最大焦虑点.如何保证游戏服务器的稳定性?设计执行一个相对完善的测试方案是解决焦虑最重要的步骤.通过什么样的测试方案可以让我们服务器人稍微放松一些?如果玩家的任何输入, 服务器都已经测试过千百遍, 那这样我们就有自信多了.2. 测试方案设计 我们一开始考虑的是一个完备的测试用例集, 一个覆盖所有可能玩家输入的测试用例集.但是完备的测试用例不具备可执行性(比如一个int值, 如何测试完备?).我们需要在完备和可执行性之间取平衡? 标准是什么?最终我们决定测试用例集的标准是服务器上所有分支的覆盖.玩家的一个输入, 所有可能到达的分支都需要覆盖到.(执行中目前我们的分支覆盖率是要求从消息处理接口开始, 两次函数调用内的分支都需要覆盖到.)3. 测试工具选择 测试用例跟游戏逻辑紧耦合, 大部分情况下需要根据不同状态进行不同选择, 目前没有找到贴合的工具.测试工具只有我们自己撸了.4. 测试工具设计 测试工具分了3个层次: - 逻辑控制层, 包括底层通信, 消息流转 - 玩家数据层 - 测试消息层在设计工具时候, 我们优先考虑的是测试工具的易用性.在使用本工具时候, 只需要设计测试消息, 关注返回数据是否符合预期即可.逻辑层和数据层不用关心.比如下图展示了 战斗匹配的一个测试用例:玩家当前禁止战斗匹配中, 需要返回正确的错误码.对应覆盖服务器代码中的分支:执行结果如下:更多的 战斗匹配的测试用例, 分别对应上面服务器代码分支: 最终展示所有用例的统计:这样, 在新增一个功能后, 只需要在test case中增加对应消息就可以.很多时候, 我们需要做一些甚至很多额外的工作, 仅仅是为了覆盖到某个分支.但这是值得的. 我们现在做的额外工作, 在未来将一直发挥作用(回归测试), 保证服务器的稳定.5. 自动化测试 将测试工具加入到ci工具链中, 每次发现版本有变化都跑测试工具.">
+
+<meta property="og:title" content="游戏服务器自动化测试实践 - 老猪的小屋">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/posts/server_auto_testing_practice/">
+<meta property="og:image" content="images/default.png">
+<meta property="og:site_name" content="老猪的小屋">
+<meta property="og:description" content="1、背景 游戏服务器不稳定是我们服务器人的最大焦虑点.如何保证游戏服务器的稳定性?设计执行一个相对完善的测试方案是解决焦虑最重要的步骤.通过什么样的测试方案可以让我们服务器人稍微放松一些?如果玩家的任何输入, 服务器都已经测试过千百遍, 那这样我们就有自信多了.2. 测试方案设计 我们一开始考虑的是一个完备的测试用例集, 一个覆盖所有可能玩家输入的测试用例集.但是完备的测试用例不具备可执行性(比如一个int值, 如何测试完备?).我们需要在完备和可执行性之间取平衡? 标准是什么?最终我们决定测试用例集的标准是服务器上所有分支的覆盖.玩家的一个输入, 所有可能到达的分支都需要覆盖到.(执行中目前我们的分支覆盖率是要求从消息处理接口开始, 两次函数调用内的分支都需要覆盖到.)3. 测试工具选择 测试用例跟游戏逻辑紧耦合, 大部分情况下需要根据不同状态进行不同选择, 目前没有找到贴合的工具.测试工具只有我们自己撸了.4. 测试工具设计 测试工具分了3个层次: - 逻辑控制层, 包括底层通信, 消息流转 - 玩家数据层 - 测试消息层在设计工具时候, 我们优先考虑的是测试工具的易用性.在使用本工具时候, 只需要设计测试消息, 关注返回数据是否符合预期即可.逻辑层和数据层不用关心.比如下图展示了 战斗匹配的一个测试用例:玩家当前禁止战斗匹配中, 需要返回正确的错误码.对应覆盖服务器代码中的分支:执行结果如下:更多的 战斗匹配的测试用例, 分别对应上面服务器代码分支: 最终展示所有用例的统计:这样, 在新增一个功能后, 只需要在test case中增加对应消息就可以.很多时候, 我们需要做一些甚至很多额外的工作, 仅仅是为了覆盖到某个分支.但这是值得的. 我们现在做的额外工作, 在未来将一直发挥作用(回归测试), 保证服务器的稳定.5. 自动化测试 将测试工具加入到ci工具链中, 每次发现版本有变化都跑测试工具.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="老猪的小屋">
+<meta name="twitter:url" content="/posts/server_auto_testing_practice/">
+<meta name="twitter:title" content="游戏服务器自动化测试实践 - 老猪的小屋">
+<meta name="twitter:description" content="1、背景 游戏服务器不稳定是我们服务器人的最大焦虑点.如何保证游戏服务器的稳定性?设计执行一个相对完善的测试方案是解决焦虑最重要的步骤.通过什么样的测试方案可以让我们服务器人稍微放松一些?如果玩家的任何输入, 服务器都已经测试过千百遍, 那这样我们就有自信多了.2. 测试方案设计 我们一开始考虑的是一个完备的测试用例集, 一个覆盖所有可能玩家输入的测试用例集.但是完备的测试用例不具备可执行性(比如一个int值, 如何测试完备?).我们需要在完备和可执行性之间取平衡? 标准是什么?最终我们决定测试用例集的标准是服务器上所有分支的覆盖.玩家的一个输入, 所有可能到达的分支都需要覆盖到.(执行中目前我们的分支覆盖率是要求从消息处理接口开始, 两次函数调用内的分支都需要覆盖到.)3. 测试工具选择 测试用例跟游戏逻辑紧耦合, 大部分情况下需要根据不同状态进行不同选择, 目前没有找到贴合的工具.测试工具只有我们自己撸了.4. 测试工具设计 测试工具分了3个层次: - 逻辑控制层, 包括底层通信, 消息流转 - 玩家数据层 - 测试消息层在设计工具时候, 我们优先考虑的是测试工具的易用性.在使用本工具时候, 只需要设计测试消息, 关注返回数据是否符合预期即可.逻辑层和数据层不用关心.比如下图展示了 战斗匹配的一个测试用例:玩家当前禁止战斗匹配中, 需要返回正确的错误码.对应覆盖服务器代码中的分支:执行结果如下:更多的 战斗匹配的测试用例, 分别对应上面服务器代码分支: 最终展示所有用例的统计:这样, 在新增一个功能后, 只需要在test case中增加对应消息就可以.很多时候, 我们需要做一些甚至很多额外的工作, 仅仅是为了覆盖到某个分支.但这是值得的. 我们现在做的额外工作, 在未来将一直发挥作用(回归测试), 保证服务器的稳定.5. 自动化测试 将测试工具加入到ci工具链中, 每次发现版本有变化都跑测试工具.">
+<meta name="twitter:image" content="images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":""
+    },
+    "headline": "游戏服务器自动化测试实践 - 老猪的小屋",
+    "image": {
+      "@type": "ImageObject",
+      "url": "images/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2018-07-31T17:21:57JST",
+    "dateModified": "2018-07-31T17:21:57JST",
+    "author": {
+      "@type": "Person",
+      "name": "老猪的小屋"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "老猪的小屋",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "1、背景 游戏服务器不稳定是我们服务器人的最大焦虑点.
+如何保证游戏服务器的稳定性?
+设计执行一个相对完善的测试方案是解决焦虑最重要的步骤.
+通过什么样的测试方案可以让我们服务器人稍微放松一些?
+如果玩家的任何输入, 服务器都已经测试过千百遍, 那这样我们就有自信多了.
+2. 测试方案设计 我们一开始考虑的是一个完备的测试用例集, 一个覆盖所有可能玩家输入的测试用例集.
+但是完备的测试用例不具备可执行性(比如一个int值, 如何测试完备?).
+我们需要在完备和可执行性之间取平衡? 标准是什么?
+最终我们决定测试用例集的标准是服务器上所有分支的覆盖.
+玩家的一个输入, 所有可能到达的分支都需要覆盖到.
+(执行中目前我们的分支覆盖率是要求从消息处理接口开始, 两次函数调用内的分支都需要覆盖到.)
+3. 测试工具选择 测试用例跟游戏逻辑紧耦合, 大部分情况下需要根据不同状态进行不同选择, 目前没有找到贴合的工具.
+测试工具只有我们自己撸了.
+4. 测试工具设计 测试工具分了3个层次: - 逻辑控制层, 包括底层通信, 消息流转 - 玩家数据层 - 测试消息层
+在设计工具时候, 我们优先考虑的是测试工具的易用性.
+在使用本工具时候, 只需要设计测试消息, 关注返回数据是否符合预期即可.
+逻辑层和数据层不用关心.
+比如下图展示了 战斗匹配的一个测试用例:
+玩家当前禁止战斗匹配中, 需要返回正确的错误码.
+对应覆盖服务器代码中的分支:
+执行结果如下:
+更多的 战斗匹配的测试用例, 分别对应上面服务器代码分支: 最终展示所有用例的统计:
+这样, 在新增一个功能后, 只需要在test case中增加对应消息就可以.
+很多时候, 我们需要做一些甚至很多额外的工作, 仅仅是为了覆盖到某个分支.
+但这是值得的. 我们现在做的额外工作, 在未来将一直发挥作用(回归测试), 保证服务器的稳定.
+5. 自动化测试 将测试工具加入到ci工具链中, 每次发现版本有变化都跑测试工具."
+  }
+</script>
+
+
+    <link href="css/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">老猪的小屋</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="posts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">游戏服务器自动化测试实践</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-07-31T17:21:57JST">Jul 31, 2018</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="posts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">游戏服务器自动化测试实践</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<h2 id="1-背景">1、背景</h2>
+
+<p>游戏服务器不稳定是我们服务器人的最大焦虑点.<br />
+如何保证游戏服务器的稳定性?<br />
+设计执行一个相对完善的测试方案是解决焦虑最重要的步骤.<br />
+通过什么样的测试方案可以让我们服务器人稍微放松一些?<br />
+如果玩家的任何输入, 服务器都已经测试过千百遍, 那这样我们就有自信多了.</p>
+
+<h2 id="2-测试方案设计">2. 测试方案设计</h2>
+
+<p>我们一开始考虑的是一个完备的测试用例集, 一个覆盖所有可能玩家输入的测试用例集.<br />
+但是完备的测试用例不具备可执行性(比如一个int值, 如何测试完备?).<br />
+我们需要在完备和可执行性之间取平衡? 标准是什么?<br />
+最终我们决定测试用例集的标准是服务器上所有分支的覆盖.<br />
+玩家的一个输入, 所有可能到达的分支都需要覆盖到.<br />
+(执行中目前我们的分支覆盖率是要求从消息处理接口开始, 两次函数调用内的分支都需要覆盖到.)</p>
+
+<h2 id="3-测试工具选择">3. 测试工具选择</h2>
+
+<p>测试用例跟游戏逻辑紧耦合, 大部分情况下需要根据不同状态进行不同选择, 目前没有找到贴合的工具.<br />
+测试工具只有我们自己撸了.</p>
+
+<h2 id="4-测试工具设计">4. 测试工具设计</h2>
+
+<p>测试工具分了3个层次:
+- 逻辑控制层, 包括底层通信, 消息流转
+- 玩家数据层
+- 测试消息层</p>
+
+<p>在设计工具时候, 我们优先考虑的是测试工具的易用性.<br />
+在使用本工具时候, 只需要设计测试消息, 关注返回数据是否符合预期即可.<br />
+逻辑层和数据层不用关心.</p>
+
+<p>比如下图展示了 <strong>战斗匹配</strong>的一个测试用例:<br />
+玩家当前禁止战斗匹配中, 需要返回正确的错误码.<br />
+<img src="/images/test_case.png" alt="测试用例" /></p>
+
+<p>对应覆盖服务器代码中的分支:<br />
+<img src="/images/test_case_server_code.png" alt="test_case_server_code.png" />
+执行结果如下:<br />
+<img src="/images/test_case_result.png" alt="执行结果" /></p>
+
+<p>更多的 <strong>战斗匹配</strong>的测试用例, 分别对应上面服务器代码分支:
+<img src="/images/test_case_more.png" alt="test_case_more.png" />
+最终展示所有用例的统计:<br />
+<img src="/images/test_case_final_result.png" alt="执行结果" /></p>
+
+<p>这样, 在新增一个功能后, 只需要在test case中增加对应消息就可以.</p>
+
+<p>很多时候, 我们需要做一些甚至很多额外的工作, 仅仅是为了覆盖到某个分支.<br />
+但这是值得的. 我们现在做的额外工作, 在未来将一直发挥作用(回归测试), 保证服务器的稳定.</p>
+
+<h2 id="5-自动化测试">5. 自动化测试</h2>
+
+<p>将测试工具加入到ci工具链中, 每次发现版本有变化都跑测试工具.</p>
+
+<h2 id="6-存在问题和todo">6. 存在问题和TODO</h2>
+
+<ul>
+<li>当前python单进程支持250个玩家的并发(cpu E5620), 在这个压力下会有3%左右的失败率, 失败原因为服务器超时没有返回, 从服务器上看结果早已经返回. (高)</li>
+<li>python 执行效率偏低, 能否改进. (低) (如果有同学这方面有经验或者数据, 求联系)</li>
+<li>和ci工具集成 (低)</li>
+<li><strong>独立出来作为一个服务器质量保证工具</strong>, 类似腾讯TDR技术评审(weTest目前没有开放服务器逻辑测试, 是接入游戏时候通过TDR技术评审来保证游戏代码质量)</li>
+</ul>
+
+<h2 id="7-总结">7. 总结</h2>
+
+<p>服务器稳定性保障是一个很庞大的工程, 从开发, 测试, 发布, 部署, 调度, 监控, 恢复, 紧急处理, 自动化, 智能化等等步骤都需要我们不断迭代优化.
+作为一个游戏服务器程序, 首先从保证代码质量开始.</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="categories/devops/">devops</a></li>
+          
+          <li><a href="categories/test/">test</a></li>
+          
+          <li><a href="categories/python/">python</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="tags/auto-testing/">auto-testing</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="/posts/server_auto_testing_practice/" class="list-group-item">游戏服务器自动化测试实践</a>
+      
+      <a href="/posts/jenkins_container_run_docker/" class="list-group-item">Jenkins_container_run_docker</a>
+      
+      <a href="/posts/codereview-tools/" class="list-group-item">gerrit vs gitlab</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="categories/test" class="list-group-item">test</a>
+      
+      <a href="categories/devops" class="list-group-item">devops</a>
+      
+      <a href="categories/fun" class="list-group-item">fun</a>
+      
+      <a href="categories/hugo" class="list-group-item">hugo</a>
+      
+      <a href="categories/python" class="list-group-item">python</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="tags/jenkins" class="list-group-item">jenkins</a>
+      
+      <a href="tags/auto-testing" class="list-group-item">auto-testing</a>
+      
+      <a href="tags/cd" class="list-group-item">cd</a>
+      
+      <a href="tags/ci" class="list-group-item">ci</a>
+      
+      <a href="tags/code-review" class="list-group-item">code-review</a>
+      
+      <a href="tags/docker" class="list-group-item">docker</a>
+      
+      <a href="tags/gerrit" class="list-group-item">gerrit</a>
+      
+      <a href="tags/gitlab" class="list-group-item">gitlab</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 老猪的小屋</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

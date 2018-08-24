@@ -62,6 +62,52 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-07-31T17:21:57JST">Jul 31, 2018</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="posts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="/posts/server_auto_testing_practice/">游戏服务器自动化测试实践</a></h2>
+  </header>
+
+  
+  <div class="summary">1、背景 游戏服务器不稳定是我们服务器人的最大焦虑点.
+如何保证游戏服务器的稳定性?
+设计执行一个相对完善的测试方案是解决焦虑最重要的步骤.
+通过什么样的测试方案可以让我们服务器人稍微放松一些?
+如果玩家的任何输入, 服务器都已经测试过千百遍, 那这样我们就有自信多了.
+2. 测试方案设计 我们一开始考虑的是一个完备的测试用例集, 一个覆盖所有可能玩家输入的测试用例集.
+但是完备的测试用例不具备可执行性(比如一个int值, 如何测试完备?).
+我们需要在完备和可执行性之间取平衡? 标准是什么?
+最终我们决定测试用例集的标准是服务器上所有分支的覆盖.
+玩家的一个输入, 所有可能到达的分支都需要覆盖到.
+(执行中目前我们的分支覆盖率是要求从消息处理接口开始, 两次函数调用内的分支都需要覆盖到.)
+3. 测试工具选择 测试用例跟游戏逻辑紧耦合, 大部分情况下需要根据不同状态进行不同选择, 目前没有找到贴合的工具.
+测试工具只有我们自己撸了.
+4. 测试工具设计 测试工具分了3个层次: - 逻辑控制层, 包括底层通信, 消息流转 - 玩家数据层 - 测试消息层
+在设计工具时候, 我们优先考虑的是测试工具的易用性.
+在使用本工具时候, 只需要设计测试消息, 关注返回数据是否符合预期即可.
+逻辑层和数据层不用关心.
+比如下图展示了 战斗匹配的一个测试用例:
+玩家当前禁止战斗匹配中, 需要返回正确的错误码.
+对应覆盖服务器代码中的分支:
+执行结果如下:
+更多的 战斗匹配的测试用例, 分别对应上面服务器代码分支: 最终展示所有用例的统计:
+这样, 在新增一个功能后, 只需要在test case中增加对应消息就可以.
+很多时候, 我们需要做一些甚至很多额外的工作, 仅仅是为了覆盖到某个分支.
+但这是值得的. 我们现在做的额外工作, 在未来将一直发挥作用(回归测试), 保证服务器的稳定.
+5. 自动化测试 将测试工具加入到ci工具链中, 每次发现版本有变化都跑测试工具.</div>
+
+  
+  <footer>
+    <a href="/posts/server_auto_testing_practice/" title="游戏服务器自动化测试实践">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-07-26T11:59:51JST">Jul 26, 2018</time></li>
       <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="posts/">posts</a></li>
       
@@ -92,12 +138,13 @@ sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/
       <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="posts/">posts</a></li>
       
     </ul>
-    <h2 class="title"><a href="/posts/codereview-tools/">Codereview Tools</a></h2>
+    <h2 class="title"><a href="/posts/codereview-tools/">gerrit vs gitlab</a></h2>
   </header>
 
   
-  <div class="summary"> CodeReview 对比 gerrit: 配置自动测试流程Verified +1 之后多人code review +2 gitlab: 提交Merge请求时候指定一个assignee来执行code review
-   对比 gitlab gerrit 优胜     流程 流程弹性, 只能指定一人审核 流程强制, 未经过verified不能人工审核, 减少人力浪费, 可以多人审核通过后才算过审 gerrit   配置 配置简单 配置繁琐 gitlab   操作提醒 在merge时候发送邮件, 因为此时jenkins还在执行ci, 所以过早 按流程走, 很苏畅 gerrit   界面 界面优, 配色优, 使用时候舒服 上世纪界面 gitlab    结论  选择gitlab + jenkins做code review 这是看脸的世界, gerrit界面让人怀疑时代穿越 gitlab 在执行pipeline时候提前通知了assignee, 这点很不友好  TODO  gitlab 配置runner ci, 最后发现配置test container 测试 server container 时候不知道怎么相互通信 jenkins如何对比上次测试的数据  </div>
+  <div class="summary"> gerrit vs gitlab gerrit: 配置自动测试流程Verified +1 之后多人code review +2
+gitlab: 提交Merge请求时候指定一个assignee来执行code review
+   对比 gitlab gerrit 优胜     code review 流程弹性, 只能指定一人审核(ee可以多个) 流程强制, 未经过verified不能人工审核, 减少人力浪费, 多人审核通过后才算过审 gerrit   配置 配置简单 配置很繁琐 gitlab   操作提醒 在merge时候发送邮件, 因为此时jenkins还在执行ci, 所以过早 按流程走, 很苏畅 gerrit   界面 界面优, 配色优, 使用时候舒服 上世纪界面, 体验时空穿越 gitlab   社区 活跃, 人气旺 冷清 gitlab    结论  选择gitlab + jenkins 抱歉 gerrit, gerrit 在代码review方面强一点, 但这是个看脸看热闹的世界  TODO  gitlab 配置runner ci, 最后发现配置test container 测试 server container 时候不知道怎么相互通信 jenkins如何和上次测试的数据进行对比  </div>
 
   
 </article>
@@ -119,9 +166,11 @@ sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/
     </div>
     <div class="list-group">
       
+      <a href="/posts/server_auto_testing_practice/" class="list-group-item">游戏服务器自动化测试实践</a>
+      
       <a href="/posts/jenkins_container_run_docker/" class="list-group-item">Jenkins_container_run_docker</a>
       
-      <a href="/posts/codereview-tools/" class="list-group-item">Codereview Tools</a>
+      <a href="/posts/codereview-tools/" class="list-group-item">gerrit vs gitlab</a>
       
     </div>
   </section>
@@ -133,11 +182,15 @@ sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/
     </div>
     <div class="list-group">
       
+      <a href="categories/test" class="list-group-item">test</a>
+      
+      <a href="categories/devops" class="list-group-item">devops</a>
+      
       <a href="categories/fun" class="list-group-item">fun</a>
       
       <a href="categories/hugo" class="list-group-item">hugo</a>
       
-      <a href="categories/test" class="list-group-item">test</a>
+      <a href="categories/python" class="list-group-item">python</a>
       
     </div>
   </section>
@@ -149,6 +202,8 @@ sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/
     <div class="list-group">
       
       <a href="tags/jenkins" class="list-group-item">jenkins</a>
+      
+      <a href="tags/auto-testing" class="list-group-item">auto-testing</a>
       
       <a href="tags/cd" class="list-group-item">cd</a>
       
