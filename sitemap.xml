@@ -3,23 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/posts/server_auto_testing_practice/</loc>
-    <lastmod>2018-07-31T17:21:57+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/posts/jenkins_container_run_docker/</loc>
-    <lastmod>2018-07-26T11:59:51+08:00</lastmod>
+    <lastmod>2017-07-26T11:59:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>/posts/codereview-tools/</loc>
-    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <lastmod>2017-07-23T17:21:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/server_auto_testing_practice/</loc>
+    <lastmod>2017-06-30T17:21:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/auto-testing/</loc>
-    <lastmod>2018-07-31T17:21:57+08:00</lastmod>
+    <lastmod>2017-06-30T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -30,91 +30,91 @@
   
   <url>
     <loc>/tags/cd/</loc>
-    <lastmod>2018-07-26T11:59:51+08:00</lastmod>
+    <lastmod>2017-07-26T11:59:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/ci/</loc>
-    <lastmod>2018-07-26T11:59:51+08:00</lastmod>
+    <lastmod>2017-07-26T11:59:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/code-review/</loc>
-    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <lastmod>2017-07-23T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/devops/</loc>
-    <lastmod>2018-07-31T17:21:57+08:00</lastmod>
+    <lastmod>2017-06-30T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/docker/</loc>
-    <lastmod>2018-07-26T11:59:51+08:00</lastmod>
+    <lastmod>2017-07-26T11:59:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/fun/</loc>
-    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <lastmod>2017-07-23T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/gerrit/</loc>
-    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <lastmod>2017-07-23T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/gitlab/</loc>
-    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <lastmod>2017-07-23T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/hugo/</loc>
-    <lastmod>2018-07-23T17:21:57+08:00</lastmod>
+    <lastmod>2017-07-23T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/jenkins/</loc>
-    <lastmod>2018-07-26T11:59:51+08:00</lastmod>
+    <lastmod>2017-07-26T11:59:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/posts/</loc>
-    <lastmod>2018-07-31T17:21:57+08:00</lastmod>
+    <lastmod>2017-07-26T11:59:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/python/</loc>
-    <lastmod>2018-07-31T17:21:57+08:00</lastmod>
+    <lastmod>2017-06-30T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2018-07-31T17:21:57+08:00</lastmod>
+    <lastmod>2017-06-30T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/test/</loc>
-    <lastmod>2018-07-31T17:21:57+08:00</lastmod>
+    <lastmod>2017-07-23T17:21:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-07-31T17:21:57+08:00</lastmod>
+    <lastmod>2017-07-26T11:59:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   

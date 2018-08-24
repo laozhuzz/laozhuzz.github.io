@@ -6,7 +6,7 @@
     <description>Recent content in Python on 老猪的小屋</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 Jul 2018 17:21:57 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Jun 2017 17:21:57 +0800</lastBuildDate>
     
 	<atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>游戏服务器自动化测试实践</title>
       <link>/posts/server_auto_testing_practice/</link>
-      <pubDate>Tue, 31 Jul 2018 17:21:57 +0800</pubDate>
+      <pubDate>Fri, 30 Jun 2017 17:21:57 +0800</pubDate>
       
       <guid>/posts/server_auto_testing_practice/</guid>
       <description>1、背景 游戏服务器不稳定是我们服务器人的最大焦虑点.

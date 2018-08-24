@@ -58,7 +58,52 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-07-31T17:21:57JST">Jul 31, 2018</time></li>
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-07-26T11:59:51JST">Jul 26, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="posts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="/posts/jenkins_container_run_docker/">Jenkins_container_run_docker</a></h2>
+  </header>
+
+  
+  <div class="summary">How to build Docker image in ci pipeline under jenkins which is running inside a Docker container?
+Docker 强烈建议不要使用Dind(docker in docker)这种方式, the solutions to make this happen are generally hacky and/or unreliable.
+建议使用Docker besize docker 的方式, 方法为传入docker.sock或者开放api给jenkins.
+记录步骤如下:
+首先, 启动一个jenkins container
+sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins:lts sudo docker start jenkins sudo docker exec -it -u root jenkins bash  安装jenkins需要docker cli的支持:</div>
+
+  
+  <footer>
+    <a href="/posts/jenkins_container_run_docker/" title="Jenkins_container_run_docker">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-07-23T17:21:57JST">Jul 23, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="posts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="/posts/codereview-tools/">gerrit vs gitlab</a></h2>
+  </header>
+
+  
+  <div class="summary"> gerrit vs gitlab gerrit: 配置自动测试流程Verified +1 之后多人code review +2
+gitlab: 提交Merge请求时候指定一个assignee来执行code review
+   对比 gitlab gerrit 优胜     code review 流程弹性, 只能指定一人审核(ee可以多个) 流程强制, 未经过verified不能人工审核, 减少人力浪费, 多人审核通过后才算过审 gerrit   配置 配置简单 配置很繁琐 gitlab   操作提醒 在merge时候发送邮件, 因为此时jenkins还在执行ci, 所以过早 按流程走, 很苏畅 gerrit   界面 界面优, 配色优, 使用时候舒服 上世纪界面, 体验时空穿越 gitlab   社区 活跃, 人气旺 冷清 gitlab    结论  选择gitlab + jenkins 抱歉 gerrit, gerrit 在代码review方面强一点, 但这是个看脸看热闹的世界  TODO  gitlab 配置runner ci, 最后发现配置test container 测试 server container 时候不知道怎么相互通信 jenkins如何和上次测试的数据进行对比  </div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-06-30T17:21:57JST">Jun 30, 2017</time></li>
       <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="posts/">posts</a></li>
       
     </ul>
@@ -101,51 +146,6 @@
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-07-26T11:59:51JST">Jul 26, 2018</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="posts/">posts</a></li>
-      
-    </ul>
-    <h2 class="title"><a href="/posts/jenkins_container_run_docker/">Jenkins_container_run_docker</a></h2>
-  </header>
-
-  
-  <div class="summary">How to build Docker image in ci pipeline under jenkins which is running inside a Docker container?
-Docker 强烈建议不要使用Dind(docker in docker)这种方式, the solutions to make this happen are generally hacky and/or unreliable.
-建议使用Docker besize docker 的方式, 方法为传入docker.sock或者开放api给jenkins.
-记录步骤如下:
-首先, 启动一个jenkins container
-sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins:lts sudo docker start jenkins sudo docker exec -it -u root jenkins bash  安装jenkins需要docker cli的支持:</div>
-
-  
-  <footer>
-    <a href="/posts/jenkins_container_run_docker/" title="Jenkins_container_run_docker">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-07-23T17:21:57JST">Jul 23, 2018</time></li>
-      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="posts/">posts</a></li>
-      
-    </ul>
-    <h2 class="title"><a href="/posts/codereview-tools/">gerrit vs gitlab</a></h2>
-  </header>
-
-  
-  <div class="summary"> gerrit vs gitlab gerrit: 配置自动测试流程Verified +1 之后多人code review +2
-gitlab: 提交Merge请求时候指定一个assignee来执行code review
-   对比 gitlab gerrit 优胜     code review 流程弹性, 只能指定一人审核(ee可以多个) 流程强制, 未经过verified不能人工审核, 减少人力浪费, 多人审核通过后才算过审 gerrit   配置 配置简单 配置很繁琐 gitlab   操作提醒 在merge时候发送邮件, 因为此时jenkins还在执行ci, 所以过早 按流程走, 很苏畅 gerrit   界面 界面优, 配色优, 使用时候舒服 上世纪界面, 体验时空穿越 gitlab   社区 活跃, 人气旺 冷清 gitlab    结论  选择gitlab + jenkins 抱歉 gerrit, gerrit 在代码review方面强一点, 但这是个看脸看热闹的世界  TODO  gitlab 配置runner ci, 最后发现配置test container 测试 server container 时候不知道怎么相互通信 jenkins如何和上次测试的数据进行对比  </div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -162,11 +162,11 @@ gitlab: 提交Merge请求时候指定一个assignee来执行code review
     </div>
     <div class="list-group">
       
-      <a href="/posts/server_auto_testing_practice/" class="list-group-item">游戏服务器自动化测试实践</a>
-      
       <a href="/posts/jenkins_container_run_docker/" class="list-group-item">Jenkins_container_run_docker</a>
       
       <a href="/posts/codereview-tools/" class="list-group-item">gerrit vs gitlab</a>
+      
+      <a href="/posts/server_auto_testing_practice/" class="list-group-item">游戏服务器自动化测试实践</a>
       
     </div>
   </section>

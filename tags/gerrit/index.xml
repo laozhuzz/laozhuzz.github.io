@@ -6,7 +6,7 @@
     <description>Recent content in Gerrit on 老猪的小屋</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Jul 2018 17:21:57 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 23 Jul 2017 17:21:57 +0800</lastBuildDate>
     
 	<atom:link href="/tags/gerrit/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>gerrit vs gitlab</title>
       <link>/posts/codereview-tools/</link>
-      <pubDate>Mon, 23 Jul 2018 17:21:57 +0800</pubDate>
+      <pubDate>Sun, 23 Jul 2017 17:21:57 +0800</pubDate>
       
       <guid>/posts/codereview-tools/</guid>
       <description> gerrit vs gitlab gerrit: 配置自动测试流程Verified +1 之后多人code review +2

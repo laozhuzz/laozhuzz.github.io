@@ -6,7 +6,7 @@
     <description>Recent content in Jenkins on 老猪的小屋</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Jul 2018 11:59:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Jul 2017 11:59:51 +0800</lastBuildDate>
     
 	<atom:link href="/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Jenkins_container_run_docker</title>
       <link>/posts/jenkins_container_run_docker/</link>
-      <pubDate>Thu, 26 Jul 2018 11:59:51 +0800</pubDate>
+      <pubDate>Wed, 26 Jul 2017 11:59:51 +0800</pubDate>
       
       <guid>/posts/jenkins_container_run_docker/</guid>
       <description>How to build Docker image in ci pipeline under jenkins which is running inside a Docker container?
@@ -28,7 +28,7 @@ sudo docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /home/jenkins:/
     <item>
       <title>gerrit vs gitlab</title>
       <link>/posts/codereview-tools/</link>
-      <pubDate>Mon, 23 Jul 2018 17:21:57 +0800</pubDate>
+      <pubDate>Sun, 23 Jul 2017 17:21:57 +0800</pubDate>
       
       <guid>/posts/codereview-tools/</guid>
       <description> gerrit vs gitlab gerrit: 配置自动测试流程Verified +1 之后多人code review +2
